@@ -30,7 +30,33 @@
             </h2>
         </div>
     </div>
-
+    <!-- login pop-up layer,input phone number -->
+    <div id="killPhoneModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title text-center">
+                        <span class="glyphicon glyphicon-phone"></span>seckill phone number:
+                    </h3>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-8 col-xs-offset-2">
+                            <input type="text" name="killPhone" id="killPhoneKey" placeholder="please input phone number" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- validate information -->
+                    <span id="killPhoneMessage" class="glyphicon"></span>
+                    <button type="button" id="killPhoneBtn" class="btn  btn-success">
+                        <span class="glyphicon glyphicon-phone"></span>
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>

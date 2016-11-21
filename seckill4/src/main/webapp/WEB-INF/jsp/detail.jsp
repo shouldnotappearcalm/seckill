@@ -38,4 +38,6 @@
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<script src="<%=request.getContextPath() %>/webjars/jquery.countdown/2.1.0/dist/jquery.countdown.min.js"></script>
+
 </html>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!-- configure springmvc -->
+    <!-- 1.open spring annotation mode -->
+    <!--
+        simple configure
+            (1)auto logon DefaultAnnotationHandlerMapping,AnnotationMethodHandlerAdapter
+            (2)provide a series of configuration:data bind,format date and figure,@NumberFormat,@DateTimeFormat,
+            xml json read and write will be support as default
+    -->
+    <mvc:annotation-driven/>
+
+    <!--
+        2.the default servlet configuration static resources
+            (1).add handle static resource:js.gif.png
+            (2).allow use "/" as global mapping
+    -->
+    <mvc:default-servlet-handler/>
+
+    <!--
+        3.configure jsp,display viewResolver
+
+    -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--
+        4.scanning web related bean
+     -->
+    <context:component-scan base-package="org.seckill.web"/>
+
+</beans>

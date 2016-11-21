@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+        <!--
+                configure mybatis property
+                1.configure database parameter property of properties
+         -->
+        <context:property-placeholder location="classpath:jdbc.properties" />
+
+        <!-- 2 database connect pool -->
+        <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+                <!-- configure connect pool property -->
+                <property name="driverClass" value="${jdbc.driver}"/>
+                <property name="jdbcUrl" value="${jdbc.url}"/>
+                <property name="user" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+
+                <!-- private property of c3p0 connect pool  -->
+                <property name="maxPoolSize" value="200"/>
+                <property name="minPoolSize" value="10"/>
+                <!-- the max idle Time default is 0,it will not close always -->
+                <property name="maxIdleTime" value="1800" />
+                <!-- the max PreparedStatement is 1000 -->
+                <property name="maxStatements" value="1000" />
+                <!-- check idle connect every 60 seconds  -->
+                <property name="idleConnectionTestPeriod" value="60" />
+                <!--  Do not automatically commit after the connection is closed  -->
+                <property name="autoCommitOnClose" value="false"/>
+                <!-- get connection timeout -->
+                <property name="checkoutTimeout" value="1000"/>
+                <!--  retry count after connect false -->
+                <property name="acquireRetryAttempts"  value="2"/>
+        </bean>
+
+        <!--  convention is greater than the configuration -->
+        <!-- 3. configure sqlSessionFactory object -->
+        <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+                <!-- injection database connect pool -->
+                <property name="dataSource" ref="dataSource"/>
+                <!-- configure mybatis global configuration file  -->
+                <property name="configLocation" value="classpath:mybatis-config.xml"/>
+                <!-- scanning entity package use alias -->
+                <property name="typeAliasesPackage" value="org.seckill.entity"/>
+                <!-- scanning sql configuration file: the document mapper needs  -->
+                <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        </bean>
+
+        <!-- 4 configure scanning dao interface package,injection into spring beanfactory -->
+        <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+                <!-- injection sqlSessionFactory -->
+                <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+                <!-- configure scanning dao package he needs -->
+                <property name="basePackage" value="org.seckill.dao"/>
+        </bean>
+
+</beans>

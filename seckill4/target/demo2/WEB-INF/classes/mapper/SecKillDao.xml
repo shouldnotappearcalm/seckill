@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.seckill.dao.SecKillDao">
+    <!--
+        purpose:provide sql set to dao interface method
+    -->
+        <update id="reduceNumber">
+            <!--sql details-->
+            update seckill
+            set number =number-1
+           where seckill_id=#{seckillId}
+            and start_time &lt;= #{killTime}
+            and end_time &gt;= #{killTime}
+            and number>0;
+        </update>
+
+    <!-- it has open camel name,no need to configure cloumn name change to object property -->
+        <select id="queryById" resultType="org.seckill.entity.Seckill" parameterType="long">
+            select seckill_id,name,number,start_time,end_time,create_time from seckill
+            where seckill_id=#{seckillId}
+        </select>
+    
+        <select id="getAll" resultType="org.seckill.entity.Seckill">
+            select seckill_id,name,number,start_time,end_time,create_time
+            from seckill
+            order by create_time desc
+            limit #{offset},#{limit}
+        </select>
+
+
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- set the global properties-->
+    <settings>
+        <!-- get database auto increment primary key  by jdbc  getGeneratedKeys -->
+        <setting name="useGeneratedKeys" value="true"/>
+        <!-- use alias replace column name -->
+        <setting name="useColumnLabel" value="true" />
+        <!-- open hump to change name Table(create_time) > Entity(create)Time -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+</configuration>

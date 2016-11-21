@@ -63,7 +63,18 @@
 
 <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-<script src="<%=request.getContextPath() %>/webjars/jquery.countdown/2.1.0/dist/jquery.countdown.min.js"></script>
-
+<script src="http://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+<script src="https://cdn.bootcss.com/jquery.countdown/2.1.0/jquery.countdown.js"></script>
+<script src="/resources/script/seckill.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function(){
+       //using el expression incoming parameters
+        seckill.detail.init({
+           seckillId:${seckill.seckillId},
+            startTime:${seckill.startTime.time},
+            endTime:${seckill.endTime.time},
+            createTime:${seckill.createTime.time}
+        });
+    });
+</script>
 </html>

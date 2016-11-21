@@ -15,6 +15,9 @@ var seckill={
         }
         return false;
     },
+    handlerSeckill:function () {
+        //handle execute logic
+    },
     countdown:function (seckillId,nowTime,startTime,endTime) {
         var seckillBox=$('#seckill-box');
         console.log(nowTime);//TODO
@@ -25,15 +28,18 @@ var seckill={
         }else if(nowTime<startTime){
             //seckill is not open yet,bind timing event
             var killTime=new Date(startTime+1000);
+            console.log(killTime);//TODO
             seckillBox.countdown(killTime,function (event) {
                 //control time format
                 var format=event.strftime('seckill countdown:%D day %H hour %M minute %S second');
                 seckillBox.html(format);
                 //timing is end,callback event
+            }).on('finish.countdown',function () {
+                //get seckill address,control reality logic,execute seckill
             });
         }else{
             //seckill start
-
+            seckill.handlerSeckill();
         }
     },
 

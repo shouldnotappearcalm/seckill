@@ -28,6 +28,7 @@ var seckill={
         }else if(nowTime<startTime){
             //seckill is not open yet,bind timing event
             var killTime=new Date(startTime+1000);
+            console.log(killTime);//TODO
             seckillBox.countdown(killTime,function (event) {
                 //control time format
                 var format=event.strftime('seckill countdown:%D day %H hour %M minute %S second');

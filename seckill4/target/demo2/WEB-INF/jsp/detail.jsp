@@ -46,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer text-center">
                     <!-- validate information -->
                     <span id="killPhoneMessage" class="glyphicon"></span>
                     <button type="button" id="killPhoneBtn" class="btn  btn-success">

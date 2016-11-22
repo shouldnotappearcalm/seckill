@@ -67,7 +67,7 @@ public class SeckillController {
             result=new SeckillResult<Exposer>(false,e.getMessage());
         }
 
-        return null;
+        return result;
     }
 
     @RequestMapping(value="/{seckillId}/{md5}/execution",method = RequestMethod.POST,produces = {"application/json;charset=UTF-8"})
@@ -85,15 +85,15 @@ public class SeckillController {
             return new SeckillResult<SeckillExecution>(true, execution);
         }catch (RepeatKillException e1){
             SeckillExecution execution=new SeckillExecution(seckillId, SeckillStateEnum.REPEAT_KILL);
-            return new SeckillResult<SeckillExecution>(false,execution);
+            return new SeckillResult<SeckillExecution>(true,execution);
         }catch (SeckillCloseException e2){
             SeckillExecution execution=new SeckillExecution(seckillId, SeckillStateEnum.END);
-            return new SeckillResult<SeckillExecution>(false,execution);
+            return new SeckillResult<SeckillExecution>(true,execution);
         }
         catch (Exception e){
             logger.info(e.getMessage(),e);
             SeckillExecution execution=new SeckillExecution(seckillId, SeckillStateEnum.INNER_ERROR);
-            return new SeckillResult<SeckillExecution>(false,execution);
+            return new SeckillResult<SeckillExecution>(true,execution);
         }
     }
 

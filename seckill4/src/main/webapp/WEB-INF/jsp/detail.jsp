@@ -21,7 +21,7 @@
                 <h1>${seckill.name}</h1>
             </div>
         </div>
-        <div class="panel-body">
+        <div class="panel-body text-center">
             <h2 class="text-danger">
                 <!-- display time icon -->
                 <span class="glyphicon glyphicon-time"></span>
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer text-center">
                     <!-- validate information -->
                     <span id="killPhoneMessage" class="glyphicon"></span>
                     <button type="button" id="killPhoneBtn" class="btn  btn-success">

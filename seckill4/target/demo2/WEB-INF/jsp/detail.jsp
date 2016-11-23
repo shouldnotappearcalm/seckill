@@ -20,14 +20,14 @@
             <div class="panel-heading">
                 <h1>${seckill.name}</h1>
             </div>
-        </div>
-        <div class="panel-body">
-            <h2 class="text-danger">
-                <!-- display time icon -->
-                <span class="glyphicon glyphicon-time"></span>
-                <!-- show the countdown -->
-                <span class="glyphicon" id="seckill-box"></span>
-            </h2>
+            <div class="panel-body">
+                <h2 class="text-danger">
+                    <!-- display time icon -->
+                    <span class="glyphicon glyphicon-time"></span>
+                    <!-- show the countdown -->
+                    <span class="glyphicon" id="seckill-box"></span>
+                </h2>
+            </div>
         </div>
     </div>
     <!-- login pop-up layer,input phone number -->
